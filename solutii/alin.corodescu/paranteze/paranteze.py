@@ -22,8 +22,28 @@ Câteva exemple:
 
 def este_corect(expresie):
     """Verifică dacă toate parantezele sunt folosite corespunzător."""
-    pass
->>>>>>> 5d5cb6d... conflict solver
+    stack = []
+    for paranteza in expresie:
+        if paranteza == ')':
+            if len(stack) == 0:
+                return 0
+            if stack[-1] != '(':
+                return 0
+            else:
+                stack.pop()
+                continue
+        if paranteza == ']':
+            if len(stack) == 0:
+                return 0
+            if stack[-1] != '[':
+                return 0
+            else:
+                stack.pop()
+                continue
+        if paranteza == '[' or paranteza == '(':
+            stack.append(paranteza)
+    return 1
+
 
 if __name__ == "__main__":
     assert este_corect("[()[]]"), "Probleme la expresia 1"
