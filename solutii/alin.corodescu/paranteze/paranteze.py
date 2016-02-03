@@ -22,7 +22,28 @@ Câteva exemple:
 
 def este_corect(expresie):
     """Verifică dacă toate parantezele sunt folosite corespunzător."""
-    d={}
+    d=[]
+    for paranteza in expresie:
+   		if paranteza==')':
+			if len(d)==0:
+				return 0
+			if d[-1] !='(':
+				return 0
+			else:
+				d.pop()
+				continue
+		if paranteza==']':
+			if len(d)==0:
+				return 0
+			if d[-1]!='[':
+				return 0
+			else:
+				d.pop()
+				continue
+		if paranteza=='[' or paranteza=='(':
+			d.append(paranteza)
+    return 1
+			
 
 
 if __name__ == "__main__":

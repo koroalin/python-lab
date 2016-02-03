@@ -59,7 +59,6 @@ Posibila documentatie:
     - din cadrul arhivei amintite anterior, folderul "src"
     - https://github.com/heyhuyen/python-grep
 """
-
 def main(*args):
     try:
         path=args[-1]
@@ -69,5 +68,12 @@ def main(*args):
     except IOError:
         print "Eroare de I/O"
         return
-    
+    sir=args[-2] """aici am sirul"""
+    ar=args[-3]
+    checkArguments(ar)
+
+ def checkArguments(ar):
+ 	alfabet="-iesnr"
+ 	for litera in ar:
+
 
