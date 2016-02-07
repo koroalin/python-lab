@@ -31,10 +31,26 @@ def umple(imagine, punct):
     În cazul în care punctul se află într-o formă închisă trebuie să
     umple forma respectivă cu caracterul "*"
     """
-    pass
+    randuri = len(imagine)
+    if randuri:
+        coloane = len(imagine[0])
+    else:
+        print "Imagine goala"
+        return
+    if not (punct[0] >= 0 and punct[0] <= randuri and
+            punct[1] >= 0 and punct[1] <= coloane):
+        return
+    if imagine[punct[0]][punct[1]] == "*":
+        return
+    imagine[punct[0]][punct[1]] = "*"
+    vecini = [(punct[0] + 1, punct[1]), (punct[0] - 1, punct[1]),
+              (punct[0], punct[1] + 1), (punct[0], punct[1] - 1)]
+    for vecin in vecini:
+        umple(imagine, vecin)
 
 
 def main():
+    """apeleaza functia umple pe imaginea precizata"""
     imaginea = [
         ["-", "-", "-", "-", "-", "*", "-", "-", "-", "-", "-", "-"],
         ["-", "-", "-", "-", "-", "*", "-", "-", "-", "-", "-", "-"],

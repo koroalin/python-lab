@@ -30,7 +30,32 @@ def distanta():
     calculează distanța dintre punctul de origine și poziția
     curentă a cursorului.
     """
-    pass
+    coord_x = 0
+    coord_y = 0
+    istoric = open("istoric.tuxy", "r")
+    instructions = istoric.read()
+    for instruction in instructions.splitlines():
+        components = instruction.split()
+        try:
+            value = int(components[1])
+        except ValueError:
+            print "Valoare invalida"
+            return
+        direction = components[0].upper()
+
+        if direction == "STANGA":
+            coord_x -= value
+        elif direction == "SUS":
+            coord_y += value
+        elif direction == "DREAPTA":
+            coord_x += value
+        elif direction == "JOS":
+            coord_y -= value
+        else:
+            print "Directie invalida"
+            return
+    import math
+    print math.sqrt(coord_x*coord_x+coord_y*coord_y)
 
 
 if __name__ == "__main__":
