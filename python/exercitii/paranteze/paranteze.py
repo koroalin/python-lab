@@ -1,15 +1,13 @@
+
 #!/usr/bin/env python
 # *-* coding: UTF-8 *-*
 
 """Tuxy scrie în fiecare zi foarte multe formule matematice.
-
 Pentru că formulele sunt din ce în ce mai complicate trebuie
 să folosească o serie de paranteze și a descoperit că cea
 mai frecventă problemă a lui este că nu toate parantezele
 sunt folosite cum trebuie.
-
 Pentru acest lucru a apelat la ajutorul tău.
-
 Câteva exemple:
     - []        este bine
     - []()      este bine
@@ -23,7 +21,7 @@ Câteva exemple:
 def este_corect(expresie):
     """Verifică dacă toate parantezele sunt folosite corespunzător."""
     pass
->>>>>>> 5d5cb6d... conflict solver
+
 
 if __name__ == "__main__":
     assert este_corect("[()[]]"), "Probleme la expresia 1"
