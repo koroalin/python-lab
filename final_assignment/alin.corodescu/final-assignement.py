@@ -16,7 +16,7 @@ def stage(name):
 		#am o lista
 		for dict_instr in command:
 			#asta e un dictionar
-			for cheie, dictionar in dict_instr:
+			for cheie,dictionar in dict_instr.items():
 			# forma  key :dictionar_parametri
 				if cheie == "run_script":
 					res = functie_run(dictionar)
@@ -50,7 +50,7 @@ def functie_download(dictionar):
 	dest = dictionar["destination"]
 	command = "wget %s %s" %source %dest
 	try:
-		proc = subprocess.check_output(['bash', '-c', command)
+		proc = subprocess.check_output(['bash', '-c', command])
 	except subprocess.CalledProcessError as error:
 		print error.returncode
 		print error.output
@@ -85,7 +85,7 @@ def functie_run(dictionar):
 		return -1
 
 	for nume, val in env_variables:
-		os.environ[nume] = (string)val
+		os.environ[nume] = string(val)
 
 	return 0
 
@@ -106,7 +106,7 @@ def functie_delete(dictionar):
 	method = dictionar["method"]
 	path = dictionar["path"]
 	command = "-rm "
-	if method == "force"
+	if method == "force":
 		command += "-rf"
 	command += path
 	try:
@@ -130,11 +130,11 @@ def functie_shutdown(dictionar):
 		return -1
 	return 0
 
-def run_config(dicitionar):
+def run_config(dictionar):
 	"""creaza useri si scrie fisiere"""
-	for cheie, dict_param in dictionar:
+	for cheie, dict_param in dictionar.items():
 		if cheie == "users":
-			for user, params in dict_param:
+			for user, params in dict_param.items():
 				name = params["full_name"]
 				pgrup = params["primary-group"]
 				groups = params["groups"]
@@ -150,7 +150,7 @@ def run_config(dicitionar):
 				# creaza userul
 
 		if cheie == "write_files":
-			for val,detalii in dict_param:
+			for val,detalii in dict_param.items():
 				path = detalii["path"]
 				perm = detalii["permissions"]
 				encoding = detalii["encoding"]
